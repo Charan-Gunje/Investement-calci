@@ -6,7 +6,9 @@ import { DatabaseSync } from 'node:sqlite';
 import { calculatorCatalog } from './calculators.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const filename = process.env.DATABASE_PATH || './data/investly.sqlite';
+// Vercel functions have a read-only filesystem; only /tmp is writable.
+const defaultFilename = process.env.VERCEL ? '/tmp/investly.sqlite' : './data/investly.sqlite';
+const filename = process.env.DATABASE_PATH || defaultFilename;
 fs.mkdirSync(path.dirname(path.resolve(filename)), { recursive: true });
 export const db = new DatabaseSync(filename);
 db.exec('PRAGMA foreign_keys = ON; PRAGMA journal_mode = WAL; PRAGMA busy_timeout = 5000;');
