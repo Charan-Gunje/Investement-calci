@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#064d43">
+  <meta name="description" content="Investly helps you plan investments, compare scenarios, and understand projected returns with clarity.">
+  <title>Investly — Invest with clarity</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Investly home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>investly<span class="brand-dot">.</span></span></a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <div class="nav-group"><span class="nav-section-label">Workspace</span><a href="#home" data-nav="home">Overview</a></div>
+        <div class="nav-group"><span class="nav-section-label">Planning</span><a href="#calculators" data-nav="calculators">Calculators</a><a href="#compare" data-nav="compare">Compare plans</a></div>
+        <div class="nav-group"><span class="nav-section-label">Insights</span><a href="#history" data-nav="history" class="auth-only">History</a><a href="#currency" data-nav="currency" class="auth-only">Currency</a></div>
+        <div class="nav-group"><span class="nav-section-label">Account</span><a href="#about" data-nav="about">About Investly</a><a href="#admin" data-nav="admin" class="admin-only hide">Administration</a></div>
+      </nav>
+      <div class="header-actions" id="header-actions"></div>
+      <button class="mobile-menu" id="mobile-menu" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </header>
+    <button class="sidebar-backdrop" id="sidebar-backdrop" aria-label="Close navigation"></button>
+    <div class="app-main">
+      <div class="workspace-toolbar" id="workspace-toolbar">
+        <div class="workspace-heading"><div class="workspace-breadcrumb"><span>INVESTLY</span><span aria-hidden="true">/</span><span id="workspace-section">Workspace</span></div><h1 id="workspace-title">Investment overview</h1></div>
+        <form class="workspace-search" id="workspace-search" role="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="m16 16 4.5 4.5"></path></svg><input id="workspace-search-input" type="search" name="query" placeholder="Search calculators..." aria-label="Search calculators"><kbd>Enter</kbd></form>
+        <a href="#calculators" class="button button-primary workspace-new"><span aria-hidden="true">＋</span> New calculation</a>
+      </div>
+      <main id="main" tabindex="-1"><div id="view" aria-live="polite"></div></main>
+      <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>investly<span class="brand-dot">.</span></span></a><p>Built for clearer financial decisions.</p><span>© <span id="year"></span> Investly</span></footer>
+    </div>
+  </div>
+  <dialog id="auth-dialog" aria-labelledby="auth-title"><button class="dialog-close" type="button" data-close-dialog aria-label="Close sign in dialog">×</button><div id="auth-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

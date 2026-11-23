@@ -1,0 +1,309 @@
+<div class="viz-carousel" id="investly-interface-options" aria-label="Investly interface design options">
+  <section data-variant="Calm overview" aria-label="Calm overview dashboard">
+    <style>
+      #investly-interface-options .invly-a {
+        --a-bg: light-dark(#f5f7f4, #111815);
+        --a-surface: light-dark(#ffffff, #1b2420);
+        --a-soft: light-dark(#edf3ed, #25342c);
+        --a-text: light-dark(#1b2d24, #eef5ef);
+        --a-muted: light-dark(#78877d, #a7b5aa);
+        --a-line: light-dark(#e6ebe5, #303a34);
+        --a-green: light-dark(#26774d, #84d3a1);
+        --a-pie1: light-dark(#39865b, #76c68e);
+        --a-pie2: light-dark(#8db89a, #4d795b);
+        --a-pie3: light-dark(#cfdfd1, #365440);
+        color-scheme: light dark;
+        background: var(--a-bg);
+        color: var(--a-text);
+        font: 400 14px/1.45 Inter, ui-sans-serif, system-ui, sans-serif;
+        border-radius: 18px;
+        overflow: hidden;
+      }
+      #investly-interface-options .invly-a * { box-sizing: border-box; }
+      #investly-interface-options .invly-a button { font: inherit; color: inherit; }
+      #investly-interface-options .invly-a .shell { display: flex; min-height: 670px; }
+      #investly-interface-options .invly-a .sidebar { width: 210px; flex: 0 0 210px; padding: 24px 16px; background: var(--a-surface); border-right: 1px solid var(--a-line); }
+      #investly-interface-options .invly-a .brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; letter-spacing: -0.6px; margin: 0 6px 38px; }
+      #investly-interface-options .invly-a .brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 12px; color: #fff; background: #25784e; }
+      #investly-interface-options .invly-a .nav-label { color: var(--a-muted); font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; margin: 0 10px 10px; }
+      #investly-interface-options .invly-a .nav { display: grid; gap: 5px; }
+      #investly-interface-options .invly-a .nav-link { display: flex; align-items: center; gap: 11px; width: 100%; border: 0; border-radius: 10px; background: transparent; color: var(--a-muted); padding: 11px 10px; text-align: left; }
+      #investly-interface-options .invly-a .nav-link.active { color: var(--a-green); background: var(--a-soft); font-weight: 500; }
+      #investly-interface-options .invly-a .nav-link i { display: inline-flex; width: 18px; justify-content: center; }
+      #investly-interface-options .invly-a .side-bottom { margin-top: 74px; border-top: 1px solid var(--a-line); padding-top: 17px; }
+      #investly-interface-options .invly-a .profile { display: flex; align-items: center; gap: 10px; padding: 9px 7px; }
+      #investly-interface-options .invly-a .avatar { width: 33px; height: 33px; display: grid; place-items: center; border-radius: 50%; color: #27533a; background: #d9ecde; font-size: 12px; font-weight: 500; }
+      #investly-interface-options .invly-a .profile small { display: block; color: var(--a-muted); font-size: 11px; }
+      #investly-interface-options .invly-a .main { flex: 1; min-width: 0; padding: 24px 28px 30px; }
+      #investly-interface-options .invly-a .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
+      #investly-interface-options .invly-a .welcome { color: var(--a-muted); font-size: 12px; }
+      #investly-interface-options .invly-a h1 { margin: 2px 0 0; font-size: 25px; letter-spacing: -.7px; font-weight: 500; }
+      #investly-interface-options .invly-a .top-actions { display: flex; align-items: center; gap: 9px; }
+      #investly-interface-options .invly-a .icon-button { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--a-line); border-radius: 11px; background: var(--a-surface); }
+      #investly-interface-options .invly-a .primary-button { display: flex; align-items: center; gap: 8px; border: 0; border-radius: 10px; padding: 11px 14px; color: #fff; background: #26774d; font-size: 12px; font-weight: 500; }
+      #investly-interface-options .invly-a .grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(235px, .9fr); gap: 16px; }
+      #investly-interface-options .invly-a .panel { background: var(--a-surface); border: 1px solid var(--a-line); border-radius: 14px; padding: 18px; }
+      #investly-interface-options .invly-a .balance-panel { background: linear-gradient(125deg, light-dark(#e8f3e9, #21352a), var(--a-surface)); }
+      #investly-interface-options .invly-a .balance-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+      #investly-interface-options .invly-a .eyebrow { color: var(--a-muted); font-size: 12px; }
+      #investly-interface-options .invly-a .amount { margin: 7px 0 5px; font-size: 34px; letter-spacing: -1.3px; font-weight: 500; }
+      #investly-interface-options .invly-a .growth { display: flex; align-items: center; gap: 6px; color: var(--a-green); font-size: 12px; font-weight: 500; }
+      #investly-interface-options .invly-a .period { border: 1px solid var(--a-line); border-radius: 8px; background: var(--a-surface); padding: 7px 9px; color: var(--a-muted); font-size: 11px; }
+      #investly-interface-options .invly-a .chart { display: block; width: 100%; height: 134px; margin-top: 11px; overflow: visible; }
+      #investly-interface-options .invly-a .chart-labels { display: flex; justify-content: space-between; color: var(--a-muted); font-size: 10px; padding: 0 3px; }
+      #investly-interface-options .invly-a .section-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 15px; }
+      #investly-interface-options .invly-a h2 { margin: 0; font-size: 14px; font-weight: 500; }
+      #investly-interface-options .invly-a .text-link { color: var(--a-green); font-size: 11px; font-weight: 500; }
+      #investly-interface-options .invly-a .metric-row { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--a-line); }
+      #investly-interface-options .invly-a .metric-label { display: flex; align-items: center; gap: 8px; color: var(--a-muted); font-size: 11px; }
+      #investly-interface-options .invly-a .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--a-pie1); }
+      #investly-interface-options .invly-a .metric-value { font-size: 12px; font-weight: 500; }
+      #investly-interface-options .invly-a .allocation { display: grid; grid-template-columns: 96px minmax(0, 1fr); align-items: center; gap: 11px; margin: 4px 0 13px; }
+      #investly-interface-options .invly-a .pie-chart { display: block; width: 96px; height: 96px; }
+      #investly-interface-options .invly-a .allocation-list { display: grid; gap: 9px; }
+      #investly-interface-options .invly-a .allocation-item { min-width: 0; }
+      #investly-interface-options .invly-a .allocation-name { display: flex; align-items: center; gap: 6px; color: var(--a-muted); font-size: 10px; }
+      #investly-interface-options .invly-a .allocation-name .dot { flex: 0 0 8px; }
+      #investly-interface-options .invly-a .allocation-amount { margin: 2px 0 0 14px; font-size: 11px; font-weight: 500; }
+      #investly-interface-options .invly-a .quick { margin-top: 16px; }
+      #investly-interface-options .invly-a .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+      #investly-interface-options .invly-a .quick-item { min-height: 82px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--a-line); border-radius: 11px; padding: 11px; background: var(--a-surface); }
+      #investly-interface-options .invly-a .quick-item i { color: var(--a-green); }
+      #investly-interface-options .invly-a .quick-item span { font-size: 11px; font-weight: 500; }
+      #investly-interface-options .invly-a .history { margin-top: 16px; }
+      #investly-interface-options .invly-a .history-row { display: grid; grid-template-columns: minmax(130px, 1.3fr) 1fr 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--a-line); font-size: 11px; }
+      #investly-interface-options .invly-a .history-row span:nth-child(n+2) { color: var(--a-muted); }
+      #investly-interface-options .invly-a .status { color: var(--a-green); background: var(--a-soft); border-radius: 99px; padding: 4px 8px; font-size: 10px; }
+      @media (max-width: 760px) {
+        #investly-interface-options .invly-a .shell { display: block; }
+        #investly-interface-options .invly-a .sidebar { width: auto; padding: 13px 15px 9px; border-right: 0; border-bottom: 1px solid var(--a-line); }
+        #investly-interface-options .invly-a .brand { margin: 0 3px 10px; font-size: 18px; }
+        #investly-interface-options .invly-a .nav-label, #investly-interface-options .invly-a .side-bottom { display: none; }
+        #investly-interface-options .invly-a .nav { display: flex; flex-wrap: wrap; gap: 4px; }
+        #investly-interface-options .invly-a .nav-link { width: auto; padding: 8px; font-size: 11px; }
+        #investly-interface-options .invly-a .main { padding: 20px 15px; }
+      }
+      @media (max-width: 560px) {
+        #investly-interface-options .invly-a .grid { grid-template-columns: 1fr; }
+        #investly-interface-options .invly-a .topbar { align-items: flex-start; }
+        #investly-interface-options .invly-a .top-actions .icon-button { display: none; }
+        #investly-interface-options .invly-a .amount { font-size: 29px; }
+        #investly-interface-options .invly-a .quick-grid { grid-template-columns: repeat(2, 1fr); }
+        #investly-interface-options .invly-a .history-row { grid-template-columns: 1.2fr 1fr auto; }
+        #investly-interface-options .invly-a .history-row span:nth-child(3) { display: none; }
+      }
+    </style>
+    <div class="invly-a">
+      <div class="shell">
+        <aside class="sidebar" aria-label="Main navigation">
+          <div class="brand"><span class="brand-mark"><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i></span>Investly</div>
+          <div class="nav-label">Workspace</div>
+          <nav class="nav" aria-label="Workspace">
+            <button class="nav-link active" aria-current="page"><i data-lucide="layout-dashboard" aria-hidden="true"></i>Overview</button>
+            <button class="nav-link"><i data-lucide="calculator" aria-hidden="true"></i>Calculators</button>
+            <button class="nav-link"><i data-lucide="git-compare-arrows" aria-hidden="true"></i>Compare</button>
+            <button class="nav-link"><i data-lucide="history" aria-hidden="true"></i>History</button>
+            <button class="nav-link"><i data-lucide="arrow-left-right" aria-hidden="true"></i>Currency</button>
+          </nav>
+          <div class="side-bottom">
+            <div class="profile"><div class="avatar">CS</div><div><strong>Charan S.</strong><small>Personal account</small></div><i data-lucide="chevron-down" aria-hidden="true"></i></div>
+          </div>
+        </aside>
+        <main class="main">
+          <header class="topbar">
+            <div><div class="welcome">Monday, 24 November 2025</div><h1>Your overview</h1></div>
+            <div class="top-actions"><button class="icon-button" aria-label="Search"><i data-lucide="search" aria-hidden="true"></i></button><button class="icon-button" aria-label="Notifications"><i data-lucide="bell" aria-hidden="true"></i></button><button class="primary-button"><i data-lucide="plus" aria-hidden="true"></i>New calculation</button></div>
+          </header>
+          <div class="grid">
+            <div>
+              <section class="panel balance-panel" aria-label="Investment value trend">
+                <div class="balance-row"><div><div class="eyebrow">Projected portfolio value</div><div class="amount">₹12,45,680</div><div class="growth"><i data-lucide="arrow-up-right" aria-hidden="true"></i>₹4,45,680 estimated returns <span style="color:var(--a-muted);font-weight:400">· over 8 years</span></div></div><button class="period">Last 8 years⌄</button></div>
+                <svg class="chart" viewBox="0 0 620 150" role="img" aria-label="Portfolio value chart trending upward over eight years" preserveAspectRatio="none">
+                  <path d="M0 126H620M0 88H620M0 50H620M0 12H620" fill="none" stroke="var(--a-line)" stroke-width="1"/>
+                  <path d="M4 127 C45 118 63 121 92 109 S145 112 175 93 S220 99 248 82 S297 90 329 68 S371 80 405 59 S456 68 487 44 S545 51 574 29 S603 31 617 15 L617 147 L4 147Z" fill="light-dark(#74ae82, #39764f)" opacity=".14"/>
+                  <path d="M4 127 C45 118 63 121 92 109 S145 112 175 93 S220 99 248 82 S297 90 329 68 S371 80 405 59 S456 68 487 44 S545 51 574 29 S603 31 617 15" fill="none" stroke="var(--a-green)" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="617" cy="15" r="4.5" fill="var(--a-green)"/>
+                </svg>
+                <div class="chart-labels"><span>2018</span><span>2020</span><span>2022</span><span>2024</span><span>2026</span></div>
+              </section>
+              <section class="quick">
+                <div class="section-head"><h2>Start with a tool</h2><span class="text-link">All calculators&nbsp; →</span></div>
+                <div class="quick-grid">
+                  <div class="quick-item"><i data-lucide="calendar-days" aria-hidden="true"></i><span>SIP planner</span></div>
+                  <div class="quick-item"><i data-lucide="wallet" aria-hidden="true"></i><span>Lump sum</span></div>
+                  <div class="quick-item"><i data-lucide="percent" aria-hidden="true"></i><span>Interest</span></div>
+                  <div class="quick-item"><i data-lucide="target" aria-hidden="true"></i><span>Goal planner</span></div>
+                  <div class="quick-item"><i data-lucide="trending-up" aria-hidden="true"></i><span>ROI &amp; inflation</span></div>
+                  <div class="quick-item"><i data-lucide="arrow-left-right" aria-hidden="true"></i><span>Currency</span></div>
+                </div>
+              </section>
+            </div>
+            <aside class="panel" aria-label="Portfolio breakdown">
+              <div class="section-head"><h2>Portfolio snapshot</h2><span class="text-link">Details</span></div>
+              <div class="eyebrow">Total invested</div><div style="font-size:21px;font-weight:500;margin:4px 0 11px">₹8,00,000</div>
+              <div class="allocation">
+                <svg class="pie-chart" viewBox="0 0 160 160" role="img" aria-label="Portfolio allocation pie chart: mutual funds 77.5 percent, fixed deposits 15.6 percent, other 6.9 percent">
+                  <title>Portfolio allocation</title><desc>Mutual funds: 77.5 percent. Fixed deposits: 15.6 percent. Other: 6.9 percent.</desc>
+                  <path d="M80 80 L80 20 A60 60 0 1 1 20.74 70.61 Z" fill="var(--a-pie1)"/>
+                  <path d="M80 80 L20.74 70.61 A60 60 0 0 1 54.88 25.51 Z" fill="var(--a-pie2)"/>
+                  <path d="M80 80 L54.88 25.51 A60 60 0 0 1 80 20 Z" fill="var(--a-pie3)"/>
+                </svg>
+                <div class="allocation-list" aria-label="Portfolio allocation details">
+                  <div class="allocation-item"><div class="allocation-name"><span class="dot"></span>Mutual funds · 77.5%</div><div class="allocation-amount">₹6,20,000</div></div>
+                  <div class="allocation-item"><div class="allocation-name"><span class="dot" style="background:var(--a-pie2)"></span>Fixed deposits · 15.6%</div><div class="allocation-amount">₹1,25,000</div></div>
+                  <div class="allocation-item"><div class="allocation-name"><span class="dot" style="background:var(--a-pie3)"></span>Other · 6.9%</div><div class="allocation-amount">₹55,000</div></div>
+                </div>
+              </div>
+              <div class="quick" style="padding-top:10px;border-top:1px solid var(--a-line)">
+                <div class="section-head"><h2>Monthly SIP</h2><span class="text-link">Open tool</span></div>
+                <div class="eyebrow">At a glance</div><div style="font-size:21px;font-weight:500;margin:4px 0">₹15,000 <span style="font-size:11px;color:var(--a-muted);font-weight:400">per month</span></div>
+                <div class="growth"><i data-lucide="arrow-up-right" aria-hidden="true"></i>8.4% projected annual return</div>
+              </div>
+            </aside>
+          </div>
+          <section class="panel history" aria-label="Recent calculations">
+            <div class="section-head"><h2>Recent calculations</h2><span class="text-link">View history&nbsp; →</span></div>
+            <div class="history-row" style="border-top:0;padding-top:0;color:var(--a-muted)"><span>Calculation</span><span>Invested</span><span>Updated</span><span>Status</span></div>
+            <div class="history-row"><strong>Retirement SIP</strong><span>₹15,000 / mo</span><span>Today</span><span class="status">Saved</span></div>
+            <div class="history-row"><strong>Home down payment</strong><span>₹5,00,000</span><span>Yesterday</span><span class="status">Saved</span></div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </section>
+  <section data-variant="Calculator studio" aria-label="Calculator studio workspace" hidden>
+    <style>
+      #investly-interface-options .invly-b {
+        --b-bg: light-dark(#f3f6fa, #111722);
+        --b-surface: light-dark(#ffffff, #1a2431);
+        --b-soft: light-dark(#eaf0f8, #263447);
+        --b-text: light-dark(#17283e, #edf3fb);
+        --b-muted: light-dark(#718199, #a2b1c5);
+        --b-line: light-dark(#e1e8f1, #303d50);
+        --b-blue: light-dark(#3867c8, #8db4ff);
+        --b-pie1: light-dark(#3867c8, #8db4ff);
+        --b-pie2: light-dark(#a5bee9, #496991);
+        color-scheme: light dark;
+        background: var(--b-bg);
+        color: var(--b-text);
+        font: 400 14px/1.45 Inter, ui-sans-serif, system-ui, sans-serif;
+        border-radius: 18px;
+        overflow: hidden;
+      }
+      #investly-interface-options .invly-b * { box-sizing: border-box; }
+      #investly-interface-options .invly-b button { font: inherit; color: inherit; }
+      #investly-interface-options .invly-b .top { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 17px 25px; border-bottom: 1px solid var(--b-line); background: var(--b-surface); }
+      #investly-interface-options .invly-b .brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 600; letter-spacing: -.5px; }
+      #investly-interface-options .invly-b .brand-mark { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 11px; background: #3867c8; color: white; }
+      #investly-interface-options .invly-b .topnav { display: flex; align-items: center; gap: 22px; color: var(--b-muted); font-size: 12px; }
+      #investly-interface-options .invly-b .topnav .active { color: var(--b-blue); font-weight: 500; }
+      #investly-interface-options .invly-b .account { display: flex; align-items: center; gap: 9px; }
+      #investly-interface-options .invly-b .avatar { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: #768fb1; font-size: 11px; }
+      #investly-interface-options .invly-b .page { max-width: 1120px; margin: 0 auto; padding: 29px 26px 32px; }
+      #investly-interface-options .invly-b .heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin-bottom: 20px; }
+      #investly-interface-options .invly-b .eyebrow { color: var(--b-muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+      #investly-interface-options .invly-b h1 { margin: 4px 0 0; font-size: 26px; letter-spacing: -.7px; font-weight: 500; }
+      #investly-interface-options .invly-b .help { color: var(--b-muted); font-size: 11px; }
+      #investly-interface-options .invly-b .types { display: flex; gap: 7px; overflow-x: auto; padding: 0 0 16px; }
+      #investly-interface-options .invly-b .type { flex: 0 0 auto; border: 1px solid var(--b-line); border-radius: 9px; background: var(--b-surface); color: var(--b-muted); padding: 9px 13px; font-size: 11px; }
+      #investly-interface-options .invly-b .type.active { color: #fff; background: #3867c8; border-color: #3867c8; }
+      #investly-interface-options .invly-b .work { display: grid; grid-template-columns: minmax(280px, .83fr) minmax(360px, 1.3fr); gap: 16px; align-items: stretch; }
+      #investly-interface-options .invly-b .panel { background: var(--b-surface); border: 1px solid var(--b-line); border-radius: 14px; padding: 20px; }
+      #investly-interface-options .invly-b h2 { margin: 0; font-size: 14px; font-weight: 500; }
+      #investly-interface-options .invly-b .sub { color: var(--b-muted); font-size: 11px; margin-top: 4px; }
+      #investly-interface-options .invly-b .field { margin-top: 17px; }
+      #investly-interface-options .invly-b .label-row { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 7px; font-size: 11px; }
+      #investly-interface-options .invly-b .label-row span:last-child { color: var(--b-muted); }
+      #investly-interface-options .invly-b .input { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 43px; padding: 0 12px; border: 1px solid var(--b-line); border-radius: 9px; background: var(--b-bg); font-size: 13px; }
+      #investly-interface-options .invly-b .input small { color: var(--b-muted); font-size: 11px; }
+      #investly-interface-options .invly-b .field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      #investly-interface-options .invly-b .select-row { display: flex; align-items: center; justify-content: space-between; margin-top: 13px; color: var(--b-muted); font-size: 11px; }
+      #investly-interface-options .invly-b .select-pill { display: flex; align-items: center; gap: 7px; border: 1px solid var(--b-line); background: var(--b-surface); border-radius: 8px; padding: 7px 9px; color: var(--b-text); }
+      #investly-interface-options .invly-b .actions { display: flex; gap: 8px; margin-top: 19px; }
+      #investly-interface-options .invly-b .primary { display: flex; justify-content: center; align-items: center; gap: 8px; flex: 1; min-height: 41px; border: 0; border-radius: 9px; color: white; background: #3867c8; font-size: 12px; font-weight: 500; }
+      #investly-interface-options .invly-b .secondary { display: grid; place-items: center; width: 42px; border: 1px solid var(--b-line); border-radius: 9px; background: var(--b-surface); }
+      #investly-interface-options .invly-b .result-head { display: flex; justify-content: space-between; gap: 12px; }
+      #investly-interface-options .invly-b .result-value { margin: 10px 0 3px; font-size: 31px; letter-spacing: -1px; font-weight: 500; }
+      #investly-interface-options .invly-b .result-note { color: var(--b-muted); font-size: 11px; }
+      #investly-interface-options .invly-b .gain { color: light-dark(#23764e, #8dd4ac); background: light-dark(#edf7f0, #243b30); border-radius: 99px; padding: 6px 9px; font-size: 10px; height: fit-content; }
+      #investly-interface-options .invly-b .chart { display: block; width: 100%; height: 147px; margin: 11px 0 2px; }
+      #investly-interface-options .invly-b .chart-labels { display: flex; justify-content: space-between; color: var(--b-muted); font-size: 10px; }
+      #investly-interface-options .invly-b .split-summary { display: grid; grid-template-columns: 86px minmax(0, 1fr); align-items: center; gap: 14px; border-top: 1px solid var(--b-line); margin-top: 15px; padding-top: 14px; }
+      #investly-interface-options .invly-b .split-chart { display: block; width: 86px; height: 86px; }
+      #investly-interface-options .invly-b .split-list { display: grid; gap: 8px; }
+      #investly-interface-options .invly-b .split-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px; }
+      #investly-interface-options .invly-b .split-name { display: flex; align-items: center; gap: 6px; color: var(--b-muted); }
+      #investly-interface-options .invly-b .split-dot { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; background: var(--b-pie1); }
+      #investly-interface-options .invly-b .split-value { text-align: right; font-weight: 500; white-space: nowrap; }
+      #investly-interface-options .invly-b .bottom { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 17px; }
+      #investly-interface-options .invly-b .save { display: flex; align-items: center; gap: 7px; color: var(--b-blue); font-size: 11px; font-weight: 500; }
+      #investly-interface-options .invly-b .recent { margin-top: 17px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 16px; background: var(--b-surface); border: 1px solid var(--b-line); border-radius: 12px; font-size: 11px; }
+      #investly-interface-options .invly-b .recent span { color: var(--b-muted); }
+      @media (max-width: 760px) {
+        #investly-interface-options .invly-b .top { padding: 14px 17px; }
+        #investly-interface-options .invly-b .topnav { gap: 12px; }
+        #investly-interface-options .invly-b .topnav span:nth-child(n+4) { display: none; }
+        #investly-interface-options .invly-b .page { padding: 22px 16px; }
+        #investly-interface-options .invly-b .work { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 520px) {
+        #investly-interface-options .invly-b .topnav { display: none; }
+        #investly-interface-options .invly-b .heading { align-items: flex-start; flex-direction: column; }
+        #investly-interface-options .invly-b .work { grid-template-columns: minmax(0, 1fr); }
+        #investly-interface-options .invly-b .field-pair { grid-template-columns: 1fr 1fr; }
+        #investly-interface-options .invly-b .panel { padding: 16px; }
+        #investly-interface-options .invly-b .split-summary { grid-template-columns: 76px minmax(0, 1fr); gap: 10px; }
+        #investly-interface-options .invly-b .split-chart { width: 76px; height: 76px; }
+        #investly-interface-options .invly-b .split-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+        #investly-interface-options .invly-b .split-value { text-align: left; }
+      }
+    </style>
+    <div class="invly-b">
+      <header class="top">
+        <div class="brand"><span class="brand-mark"><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i></span>Investly</div>
+        <nav class="topnav" aria-label="Main navigation"><span>Overview</span><span class="active">Calculators</span><span>Compare</span><span>History</span><span>Currency</span></nav>
+        <div class="account"><div class="avatar">CS</div><span style="font-size:11px">Charan</span><i data-lucide="chevron-down" aria-hidden="true"></i></div>
+      </header>
+      <main class="page">
+        <div class="heading"><div><div class="eyebrow">Investment tools&nbsp; / &nbsp;Plan a contribution</div><h1>Build your investment plan</h1></div><div class="help">Estimate returns before you invest</div></div>
+        <div class="types" role="group" aria-label="Calculator type"><button class="type active">SIP</button><button class="type">Lump sum</button><button class="type">Simple interest</button><button class="type">Compound interest</button><button class="type">ROI &amp; inflation</button><button class="type">Goal plan</button></div>
+        <div class="work">
+          <section class="panel" aria-label="SIP inputs">
+            <h2>Monthly investment</h2><div class="sub">Adjust the inputs to see your projected outcome.</div>
+            <div class="field"><div class="label-row"><span>Monthly contribution</span><span>Amount invested each month</span></div><div class="input"><span>₹&nbsp; 15,000</span><small>INR</small></div></div>
+            <div class="field-pair">
+              <div class="field"><div class="label-row"><span>Expected return</span></div><div class="input"><span>12</span><small>% p.a.</small></div></div>
+              <div class="field"><div class="label-row"><span>Time period</span></div><div class="input"><span>10</span><small>years</small></div></div>
+            </div>
+            <div class="select-row"><span>Contribution timing</span><span class="select-pill">Beginning of month&nbsp;⌄</span></div>
+            <div class="select-row"><span>Display currency</span><span class="select-pill">₹&nbsp; INR&nbsp;⌄</span></div>
+            <div class="actions"><button class="primary"><i data-lucide="calculator" aria-hidden="true"></i>Calculate returns</button><button class="secondary" aria-label="Reset calculator"><i data-lucide="rotate-ccw" aria-hidden="true"></i></button></div>
+          </section>
+          <section class="panel" aria-label="Projected result and graph">
+            <div class="result-head"><div><div class="eyebrow">Estimated value after 10 years</div><div class="result-value">₹34,85,086</div><div class="result-note">Your monthly SIP could grow to this amount</div></div><span class="gain">+₹16,85,086 growth</span></div>
+            <svg class="chart" viewBox="0 0 560 160" role="img" aria-label="Projected investment value rises over ten years" preserveAspectRatio="none">
+              <path d="M0 130H560M0 93H560M0 56H560M0 19H560" fill="none" stroke="var(--b-line)" stroke-width="1"/>
+              <path d="M4 133 C58 125 85 117 111 108 S164 94 195 82 S244 70 280 58 S330 46 365 37 S418 29 448 23 S504 17 556 10 L556 150 L4 150Z" fill="light-dark(#6e96e8, #4a70b5)" opacity=".15"/>
+              <path d="M4 133 C58 125 85 117 111 108 S164 94 195 82 S244 70 280 58 S330 46 365 37 S418 29 448 23 S504 17 556 10" fill="none" stroke="var(--b-blue)" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="556" cy="10" r="4.5" fill="var(--b-blue)"/>
+            </svg>
+            <div class="chart-labels"><span>Year 0</span><span>Year 2</span><span>Year 4</span><span>Year 6</span><span>Year 8</span><span>Year 10</span></div>
+            <div class="split-summary" aria-label="Investment and returns breakdown">
+              <svg class="split-chart" viewBox="0 0 100 100" role="img" aria-label="Pie chart: invested amount 51.6 percent, estimated returns 48.4 percent">
+                <title>Invested amount and estimated returns</title><desc>Invested amount: 51.6 percent. Estimated returns: 48.4 percent.</desc>
+                <path d="M50 50 L50 12 A38 38 0 1 1 46.1 87.8 Z" fill="var(--b-pie1)"/>
+                <path d="M50 50 L46.1 87.8 A38 38 0 0 1 50 12 Z" fill="var(--b-pie2)"/>
+              </svg>
+              <div class="split-list">
+                <div class="split-row"><span class="split-name"><span class="split-dot"></span>Invested</span><span class="split-value">₹18,00,000 · 51.6%</span></div>
+                <div class="split-row"><span class="split-name"><span class="split-dot" style="background:var(--b-pie2)"></span>Est. returns</span><span class="split-value">₹16,85,086 · 48.4%</span></div>
+              </div>
+            </div>
+            <div class="bottom"><span class="save"><i data-lucide="bookmark-plus" aria-hidden="true"></i>Save calculation</span><button class="select-pill"><i data-lucide="file-down" aria-hidden="true"></i>&nbsp; Download report</button></div>
+          </section>
+        </div>
+        <div class="recent"><strong>Recent calculation</strong><span>Retirement SIP&nbsp; · &nbsp;₹15,000 monthly&nbsp; · &nbsp;10 years</span><span>Open history&nbsp; →</span></div>
+      </main>
+    </div>
+  </section>
+</div>
