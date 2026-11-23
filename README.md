@@ -63,9 +63,11 @@ The supplied UML class, activity, sequence, and use-case diagrams were used. The
 
 ## Deployment notes
 
-Investly needs a long-running Node.js web service, not static or serverless hosting (Vercel, Netlify, and GitHub Pages cannot run it, because it keeps a SQLite file open behind an HTTP server).
+For lasting data, run Investly on a long-running Node.js web service with a persistent disk (Render, Railway, Fly.io, Heroku). Static hosts such as Netlify and GitHub Pages cannot run it at all, because it needs a Node HTTP server plus a SQLite file.
 
-- **Runtime:** Node.js 22.13 or newer. `.nvmrc` pins 24 and `package.json` allows `>=22.13.0 <26`; `node:sqlite` only exists from 22.5 and is flagged before 22.13, so older runtimes crash at startup.
+Vercel works as a live demo: `vercel.json` bundles `public/` and `migrations/`, and the database is written to `/tmp` because Vercel's filesystem is read-only. Vercel gives each function instance its own `/tmp` that is discarded when the instance stops, so accounts and saved calculations there are temporary. Point `DATABASE_PATH` at a persistent volume or move to a hosted database for real use.
+
+- **Runtime:** Node.js 22.13 or newer. `.nvmrc` pins 24 and `package.json` requires `24.x` (the runtime Vercel supports); `node:sqlite` only exists from 22.5 and is flagged before 22.13, so older runtimes crash at startup.
 - **Start command:** `npm start` (or `node server.js`). The included `Procfile` declares the same command for process-based hosts.
 - **Networking:** the server binds `0.0.0.0` and uses `PORT` from the environment, so platform port detection and health checks succeed. Set `HOST` only if a specific interface is required.
 - **Environment:** set `COOKIE_SECURE=true` behind HTTPS, point `DATABASE_PATH` at persistent storage, and provide `BOOTSTRAP_ADMIN_EMAIL` and `BOOTSTRAP_ADMIN_PASSWORD` once to create the first administrator.
