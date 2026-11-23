@@ -6,3 +6,5 @@ data/
 node_modules/
 coverage/
 tmp/
+output/
+presentation-output/

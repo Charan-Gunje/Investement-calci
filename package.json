@@ -9,5 +9,5 @@
     "dev": "node --watch server.js",
     "test": "node --test"
   },
-  "engines": { "node": ">=22.5" }
+  "engines": { "node": ">=22.13.0 <26" }
 }

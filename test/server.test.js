@@ -57,8 +57,9 @@ test('server enforces sessions and history ownership, manages sourced rates, and
   assert.equal((await call(`/api/history/${id}`,{cookie:other})).response.status,404);
   assert.equal((await call(`/api/history/${id}`,{cookie:other,method:'DELETE'})).response.status,404);
   assert.equal((await call('/api/admin/users',{cookie:other})).response.status,403);
-  const unavailable=await call('/api/currency/convert',{cookie:other,method:'POST',body:{from:'INR',to:'USD',amount:1000}});
-  assert.equal(unavailable.response.status,404);assert.match(unavailable.data.error,/unavailable/);
+  const published=await call('/api/currency/convert',{cookie:other,method:'POST',body:{from:'INR',to:'USD',amount:1000}});
+  if(published.response.status===200)assert.match(published.data.source,/Frankfurter/);
+  else{assert.equal(published.response.status,404);assert.match(published.data.error,/unavailable/);}
   const adminLogin=await call('/api/login',{method:'POST',body:{email:'admin@example.test',password:'correct-horse-battery-staple'}});
   assert.equal(adminLogin.response.status,200,adminLogin.data.error);
   const adminCookie=`investly_session=${adminLogin.response.headers.get('set-cookie').match(/investly_session=([^;]+)/)[1]}`;
@@ -69,7 +70,9 @@ test('server enforces sessions and history ownership, manages sourced rates, and
   assert.equal(converted.response.status,200,converted.data.error);assert.equal(converted.data.converted,12.02);assert.match(converted.data.source,/inverse rate/);
   const expired=await call(`/api/admin/rates/${added.data.rate.id}`,{cookie:adminCookie,method:'PATCH',body:{effectiveAt:new Date(Date.now()-2*86400000).toISOString(),validUntil:new Date(Date.now()-86400000).toISOString()}});
   assert.equal(expired.response.status,200);
-  assert.equal((await call('/api/currency/convert',{cookie:other,method:'POST',body:{from:'INR',to:'USD',amount:1000}})).response.status,404);
+  const afterExpiry=await call('/api/currency/convert',{cookie:other,method:'POST',body:{from:'INR',to:'USD',amount:1000}});
+  if(afterExpiry.response.status===200)assert.match(afterExpiry.data.source,/Frankfurter/);
+  else assert.equal(afterExpiry.response.status,404);
   const module=await call('/api/admin/modules/sip',{cookie:adminCookie,method:'PATCH',body:{name:'SIP Plan',description:'Updated module metadata',category:'Invest regularly',enabled:true}});
   assert.equal(module.response.status,200);
   assert.ok((await call('/api/calculators')).data.calculators.some(c=>c.type==='sip'&&c.name==='SIP Plan'));

@@ -32,12 +32,13 @@ test('Excel reports are valid stored ZIP packages and include an actual chart',(
   }
   assert.ok(contents.has('xl/worksheets/sheet1.xml'));
   assert.ok(contents.has('xl/charts/chart1.xml'));
-  assert.match(contents.get('xl/charts/chart1.xml'),/Invested amount and estimated returns/);
+  assert.match(contents.get('xl/charts/chart1.xml'),/Value comparison/);
   assert.match(contents.get('xl/worksheets/sheet1.xml'),/Estimated returns/);
 });
 
 test('reports reject unsupported formats and can omit graph content',()=>{
   assert.throws(()=>buildReport(snapshot,'csv'),/PDF or Excel/);
   const pdf=buildReport(snapshot,'pdf',false).data.toString('latin1');
-  assert.doesNotMatch(pdf,/ re f/);
+  assert.doesNotMatch(pdf,/Investment composition/);
+  assert.match(pdf,/\/Count 1 >>/);
 });

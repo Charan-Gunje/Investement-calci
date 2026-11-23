@@ -10,6 +10,7 @@ import { buildReport } from './src/reports.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT || 3000);
+const HOST = process.env.HOST || '0.0.0.0';
 const secureCookie = process.env.COOKIE_SECURE === 'true';
 const loginAttempts = new Map();
 const reportRequests = new Map();
@@ -374,6 +375,7 @@ const server=http.createServer(async(req,res)=>{
     json(res,500,{error:'Something went wrong. Please try again.'});
   }
 });
-server.listen(PORT,'127.0.0.1',()=>console.info(`Investly is running at http://127.0.0.1:${server.address().port}`));
+server.listen(PORT,HOST,()=>console.info(`Investly is running at http://127.0.0.1:${server.address().port} (listening on ${HOST}:${PORT})`));
+server.on('error',error=>{console.error('Investly failed to start:',error.message);process.exit(1);});
 process.on('SIGINT',()=>{server.close(()=>{db.close();process.exit(0);});});
 process.on('SIGTERM',()=>{server.close(()=>{db.close();process.exit(0);});});

@@ -194,7 +194,7 @@ function makePdf(calculation, includeGraph) {
     for(const line of wrapPdfText(note,105)){if(noteY<assumptionTop-assumptionHeight+10)break;pdfTextAt(commands,54,noteY,7,line,'0.40 0.48 0.43 rg');noteY-=11;}
   }
   pdfTextAt(commands,42,31,8,'Investly  |  For planning and educational use','0.44 0.52 0.47 rg');
-  pdfTextAt(commands,548,31,'01','0.44 0.52 0.47 rg');
+  pdfTextAt(commands,548,31,8,'01','0.44 0.52 0.47 rg');
   const stream=commands.join('\n'),chartStream=includeGraph?makePdfCharts(out,currency):null;
   const objects = [
     '<< /Type /Catalog /Pages 2 0 R >>',
